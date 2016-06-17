@@ -24,6 +24,9 @@ name = re.compile('..*')
 has_name = filter(lambda row: name.match(row.name), table_3)
 weekend = filter(lambda row: row.datetime == "Sunday" or row.datetime == "Saturday", table_3)
 weekend_and_adoption = filter(lambda row: (row.datetime == "Sunday" or row.datetime == "Saturday") and row.outcometype == "Adoption", table_3)
+holidays = filter(lambda row: row.holiday == "True", table_3)
+holidays_and_adoption = filter(lambda row: row.holiday == "True" and row.outcometype == "Adoption", table_3)
+holidays_and_weekend = filter(lambda row: row.holiday == "True" and (row.datetime == "Sunday" or row.datetime == "Saturday"), table_3)
 
 
 print '--------------- Início da Análise -----------------------\n'
@@ -41,5 +44,8 @@ print 'Quantidade de animais com informação de castração desconecida: {}'.fo
 print 'Quantidade de animais com nome: {}'.format(len(has_name))
 print 'Quantidade de animais com datetime em final de semana: {}  --> {:.4g}%'.format(len(weekend), len(weekend)/quantidade_de_exemplos *100)
 print 'Quantidade de animais com datetime em final de semana e foi adotado: {}  --> {:.4g}%'.format(len(weekend_and_adoption), len(weekend_and_adoption)/len(adoption) *100)
+print 'Quantidade de animais com datetime em feriado: {} '.format(len(holidays))
+print 'Quantidade de animais com datetime em feriado e foi adotado: {}  --> {:.4g}%'.format(len(holidays_and_adoption), len(holidays)/len(adoption) *100)
+print 'Quantidade de animais com datetime em feriado e final de semana: {}'.format(len(holidays_and_weekend))
 
 

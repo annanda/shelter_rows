@@ -2,6 +2,7 @@
 
 import rows
 import calendar
+import holidays
 from collections import OrderedDict
 
 
@@ -29,6 +30,7 @@ new_fields = OrderedDict([
     ('animalid', rows.fields.UnicodeField),
     ('name', rows.fields.UnicodeField),
     ('datetime', rows.fields.UnicodeField),
+    ('holiday', rows.fields.UnicodeField),
     ('outcometype', rows.fields.UnicodeField),
     ('outcomesubtype', rows.fields.UnicodeField),
     ('animaltype', rows.fields.UnicodeField),
@@ -46,8 +48,10 @@ for row in table_1:
     else:
         sex, castration = u'Unknown', u'Unknown'
     week_day = calendar.day_name[row.datetime.weekday()]
+    us_holidays = holidays.UnitedStates()
+    holiday = row.datetime in us_holidays
     age_in_days = get_animal_age(row.ageuponoutcome)
-    table_2.append({'animalid': row.animalid, 'name': row.name, 'datetime': week_day,
+    table_2.append({'animalid': row.animalid, 'name': row.name, 'datetime': week_day, 'holiday': holiday,
                     'outcometype': row.outcometype, 'outcomesubtype': row.outcomesubtype,
                     'animaltype': row.animaltype, 'sex': sex, 'castration': castration,
                     'ageuponoutcome': age_in_days, 'breed': row.breed, 'color': row.color})
