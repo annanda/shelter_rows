@@ -2,6 +2,7 @@
 
 from __future__ import division
 import rows
+import re
 
 table_3 = rows.import_from_csv('novo.csv')
 
@@ -16,7 +17,12 @@ euthanasia = filter(lambda row: row.outcometype == "Euthanasia", table_3)
 adoption = filter(lambda row: row.outcometype == "Adoption", table_3)
 transfer = filter(lambda row: row.outcometype == "Transfer", table_3)
 died = filter(lambda row: row.outcometype == "Died", table_3)
-
+castrated = filter(lambda row: row.castration == "Neutered" or row.castration == "Spayed", table_3)
+not_castrated = filter(lambda row: row.castration == "Intact", table_3)
+castration_unknown = filter(lambda row: row.castration == "Unknown", table_3)
+name = re.compile('..*')
+has_name = filter(lambda row: name.match(row.name), table_3)
+has_not_name = filter(lambda row: row.name == "", table_3)
 
 
 print '--------------- Início da Análise -----------------------\n'
@@ -29,3 +35,8 @@ print 'Quantidade de animais que sofreram eutanásia: {} --> {:.4g}%'.format(len
 print 'Quantidade de animais que foram adotados: {} --> {:.4g}%'.format(len(adoption), len(adoption)/quantidade_de_exemplos *100)
 print 'Quantidade de animais que foram transferidos: {} --> {:.4g}%'.format(len(transfer), len(transfer)/quantidade_de_exemplos *100)
 print 'Quantidade de animais que morreram: {} --> {:.4g}%'.format(len(died), len(died)/quantidade_de_exemplos *100)
+print 'Quantidade de animais que castrados vs não castrados: {} vs {}'.format(len(castrated), len(not_castrated))
+print 'Quantidade de animais com informação de castração desconecida: {}'.format(len(castration_unknown))
+print 'Quantidade de animais com nome: {}'.format(len(has_name))
+print 'Quantidade de animais sem nome: {} - total {}'.format(len(has_not_name), len(has_name)+len(has_not_name))
+
