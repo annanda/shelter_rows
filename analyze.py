@@ -22,7 +22,8 @@ not_castrated = filter(lambda row: row.castration == "Intact", table_3)
 castration_unknown = filter(lambda row: row.castration == "Unknown", table_3)
 name = re.compile('..*')
 has_name = filter(lambda row: name.match(row.name), table_3)
-has_not_name = filter(lambda row: row.name == "", table_3)
+weekend = filter(lambda row: row.datetime == "Sunday" or row.datetime == "Saturday", table_3)
+weekend_and_adoption = filter(lambda row: (row.datetime == "Sunday" or row.datetime == "Saturday") and row.outcometype == "Adoption", table_3)
 
 
 print '--------------- Início da Análise -----------------------\n'
@@ -38,5 +39,7 @@ print 'Quantidade de animais que morreram: {} --> {:.4g}%'.format(len(died), len
 print 'Quantidade de animais que castrados vs não castrados: {} vs {}'.format(len(castrated), len(not_castrated))
 print 'Quantidade de animais com informação de castração desconecida: {}'.format(len(castration_unknown))
 print 'Quantidade de animais com nome: {}'.format(len(has_name))
-print 'Quantidade de animais sem nome: {} - total {}'.format(len(has_not_name), len(has_name)+len(has_not_name))
+print 'Quantidade de animais com datetime em final de semana: {}  --> {:.4g}%'.format(len(weekend), len(weekend)/quantidade_de_exemplos *100)
+print 'Quantidade de animais com datetime em final de semana e foi adotado: {}  --> {:.4g}%'.format(len(weekend_and_adoption), len(weekend_and_adoption)/len(adoption) *100)
+
 

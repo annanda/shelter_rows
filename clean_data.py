@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import rows
+import calendar
 from collections import OrderedDict
 
 
@@ -27,7 +28,7 @@ table_1 = rows.import_from_csv("train.csv")
 new_fields = OrderedDict([
     ('animalid', rows.fields.UnicodeField),
     ('name', rows.fields.UnicodeField),
-    ('datetime', rows.fields.DatetimeField),
+    ('datetime', rows.fields.UnicodeField),
     ('outcometype', rows.fields.UnicodeField),
     ('outcomesubtype', rows.fields.UnicodeField),
     ('animaltype', rows.fields.UnicodeField),
@@ -44,8 +45,9 @@ for row in table_1:
         castration, sex = row.sexuponoutcome.split()
     else:
         sex, castration = u'Unknown', u'Unknown'
+    week_day = calendar.day_name[row.datetime.weekday()]
     age_in_days = get_animal_age(row.ageuponoutcome)
-    table_2.append({'animalid': row.animalid, 'name': row.name, 'datetime': row.datetime,
+    table_2.append({'animalid': row.animalid, 'name': row.name, 'datetime': week_day,
                     'outcometype': row.outcometype, 'outcomesubtype': row.outcomesubtype,
                     'animaltype': row.animaltype, 'sex': sex, 'castration': castration,
                     'ageuponoutcome': age_in_days, 'breed': row.breed, 'color': row.color})
