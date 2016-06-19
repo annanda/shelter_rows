@@ -8,7 +8,9 @@ table_3 = rows.import_from_csv('novo.csv')
 
 quantidade_de_exemplos = len(table_3)
 cats = filter(lambda row: row.animaltype == "Cat", table_3)
+cats_and_adoption = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Adoption", table_3)
 dogs = filter(lambda row: row.animaltype == "Dog", table_3)
+dogs_and_adoption = filter(lambda row: row.animaltype == "Dog" and row.outcometype == "Adoption", table_3)
 male = filter(lambda row: row.sex == "Male", table_3)
 male_and_adoption = filter(lambda row: row.sex == "Male" and row.outcometype == "Adoption", table_3)
 female = filter(lambda row: row.sex == "Female", table_3)
@@ -21,7 +23,9 @@ adoption = filter(lambda row: row.outcometype == "Adoption", table_3)
 transfer = filter(lambda row: row.outcometype == "Transfer", table_3)
 died = filter(lambda row: row.outcometype == "Died", table_3)
 castrated = filter(lambda row: row.castration == "Neutered" or row.castration == "Spayed", table_3)
+castrated_and_adoption = filter(lambda row: (row.castration == "Neutered" or row.castration == "Spayed") and row.outcometype == "Adoption", table_3)
 not_castrated = filter(lambda row: row.castration == "Intact", table_3)
+not_castrated_and_adoption = filter(lambda row: row.castration == "Intact" and row.outcometype == "Adoption", table_3)
 castration_unknown = filter(lambda row: row.castration == "Unknown", table_3)
 name = re.compile('..*')
 has_name = filter(lambda row: name.match(row.name), table_3)
@@ -38,6 +42,8 @@ print 'Quantidade de exemplos: {}'.format(quantidade_de_exemplos)
 print '======================================================================================================'
 print '======================================================================================================'
 print 'Quantidade de Gatos vs Quantidade de Cachorros: {} vs {}'.format(len(cats), len(dogs))
+print '{:.4g}% dos animais adotados eram gatos'.format(len(cats_and_adoption)/len(adoption) *100)
+print '{:.4g}% dos animais adotados eram cães'.format(len(dogs_and_adoption)/len(adoption) *100)
 print '======================================================================================================'
 print 'Quantidade de Machos vs Quantidade de Fêmeas: {} vs {}'.format(len(male), len(female))
 print 'Quantidade de animais com sexo desconecido: {}'.format(len(sex_unknown))
@@ -49,6 +55,8 @@ print 'Quantidade de animais que foram transferidos: {} --> {:.4g}%'.format(len(
 print 'Quantidade de animais que morreram: {} --> {:.4g}%'.format(len(died), len(died)/quantidade_de_exemplos *100)
 print '======================================================================================================'
 print 'Quantidade de animais que castrados vs não castrados: {} vs {}'.format(len(castrated), len(not_castrated))
+print '{:.4g}% dos animais adotados eram castrados'.format(len(castrated_and_adoption)/len(adoption) *100)
+print '{:.4g}% dos animais adotados não eram castrados'.format(len(not_castrated_and_adoption)/len(adoption) *100)
 print 'Quantidade de animais com informação de castração desconhecida: {}'.format(len(castration_unknown))
 print '======================================================================================================'
 print 'Quantidade de animais com nome: {}'.format(len(has_name))
