@@ -39,7 +39,12 @@ weekend_and_died = filter(lambda row: (row.datetime == "Sunday" or row.datetime 
 weekend_and_returned = filter(lambda row: (row.datetime == "Sunday" or row.datetime == "Saturday") and row.outcometype == "Return_to_owner", table_3)
 holidays = filter(lambda row: row.holiday == "True", table_3)
 holidays_and_adoption = filter(lambda row: row.holiday == "True" and row.outcometype == "Adoption", table_3)
+holidays_and_transfer = filter(lambda row: row.holiday == "True" and row.outcometype == "Transfer", table_3)
+holidays_and_euthanasia = filter(lambda row: row.holiday == "True" and row.outcometype == "Euthanasia", table_3)
+holidays_and_died = filter(lambda row: row.holiday == "True" and row.outcometype == "Died", table_3)
+holidays_and_returned = filter(lambda row: row.holiday == "True" and row.outcometype == "Return_to_owner", table_3)
 holidays_and_weekend = filter(lambda row: row.holiday == "True" and (row.datetime == "Sunday" or row.datetime == "Saturday"), table_3)
+holidays_and_weekend_and_adoption = filter(lambda row: row.holiday == "True" and (row.datetime == "Sunday" or row.datetime == "Saturday") and row.outcometype == "Adoption", table_3)
 
 
 print '--------------- Início da Análise -----------------------\n'
@@ -78,8 +83,14 @@ print '{:.4g}% de registros em final de semana que foram com morte'.format(len(w
 print '{:.4g}% de registros em final de semana que foram com transferencia'.format(len(weekend_and_transfer)/len(weekend) *100)
 print '======================================================================================================'
 print 'Quantidade de animais com datetime em feriado: {} '.format(len(holidays))
-print 'Quantidade de animais com datetime em feriado e foi adotado: {}  --> {:.4g}%'.format(len(holidays_and_adoption), len(holidays)/len(adoption) *100)
+print 'Quantidade de animais com datetime em feriado e foi adotado: {}  --> {:.4g}%'.format(len(holidays_and_adoption), len(holidays_and_adoption)/len(adoption) *100)
+print '{:.4g}% dos registros em feriados, foram de adoção'.format(len(holidays_and_adoption)/len(holidays) *100)
+print '{:.4g}% dos registros em feriados, foram de transferencia'.format(len(holidays_and_transfer)/len(holidays) *100)
+print '{:.4g}% dos registros em feriados, foram de morte'.format(len(holidays_and_died)/len(holidays) *100)
+print '{:.4g}% dos registros em feriados, foram de devolução'.format(len(holidays_and_returned)/len(holidays) *100)
+print '{:.4g}% dos registros em feriados, foram de eutanásia'.format(len(holidays_and_euthanasia)/len(holidays) *100)
 print 'Quantidade de animais com datetime em feriado e final de semana: {}'.format(len(holidays_and_weekend))
+print 'Quantidade de animais com datetime em feriado e final de semana que foram adotados: {}'.format(len(holidays_and_weekend_and_adoption))
 print '======================================================================================================'
 print 'Quantidade de Machos vs Quantidade de Fêmeas: {} vs {}'.format(len(male), len(female))
 print 'Quantidade de animais com sexo desconecido: {}'.format(len(sex_unknown))
