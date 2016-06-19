@@ -65,4 +65,6 @@ print '=========================================================================
 print 'Quantidade de animais machos e adotados: {} --> {:.4g}%'.format(len(male_and_adoption), len(male_and_adoption)/len(adoption) *100)
 print 'Quantidade de animais femeas e adotados: {} --> {:.4g}%'.format(len(female_and_adoption), len(female_and_adoption)/len(adoption) *100)
 print 'Quantidade de animais com sexo desconhecido e adotados: {} --> {:.4g}%'.format(len(sex_unknown_and_adoption), len(sex_unknown_and_adoption)/len(adoption) *100)
+print '{:.4g}% das fêmeas foram adotadas'.format(len(female_and_adoption)/len(female) *100)
+print '{:.4g}% dos machos foram adotadas'.format(len(male_and_adoption)/len(male) *100)
 
