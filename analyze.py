@@ -4,7 +4,7 @@ from __future__ import division
 import rows
 import re
 
-table_3 = rows.import_from_csv('novo.csv')
+table_3 = rows.import_from_csv('train_cleaned.csv')
 
 quantidade_de_exemplos = len(table_3)
 cats = filter(lambda row: row.animaltype == "Cat", table_3)
