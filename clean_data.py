@@ -24,6 +24,23 @@ def get_animal_age(name):
 
     return how_many * daysInPeriod
 
+
+def get_cat_age_group(age):
+    if 0 <= age <= 365:
+        return "kitten"
+    elif 365 <= age <= 2920:
+        return "adult"
+    elif age > 2920:
+        return "senior"
+
+def get_dog_age_group(age):
+    if 0 <= age <= 186:
+        return "puppy"
+    elif 187 <= age <= 1094:
+        return "adult"
+    elif 1095 <= age <= 2554:
+        return "aging_dog"
+
 table_1 = rows.import_from_csv("train.csv")
 
 new_fields = OrderedDict([
@@ -36,7 +53,7 @@ new_fields = OrderedDict([
     ('animaltype', rows.fields.UnicodeField),
     ('sex', rows.fields.UnicodeField),
     ('castration', rows.fields.UnicodeField),
-    ('ageuponoutcome', rows.fields.UnicodeField),
+    ('agegroup', rows.fields.UnicodeField),
     ('breed', rows.fields.UnicodeField),
     ('color', rows.fields.UnicodeField)
 ])
@@ -51,17 +68,21 @@ for row in table_1:
     us_holidays = holidays.UnitedStates()
     holiday = row.datetime in us_holidays
     age_in_days = get_animal_age(row.ageuponoutcome)
-    table_2.append({'animalid': row.animalid, 
-                    'name': row.name, 
-                    'datetime': week_day, 
+    if row.animaltype == "Cat":
+        age_group = get_cat_age_group(age_in_days)
+    else:
+        age_group = get_dog_age_group(age_in_days)
+    table_2.append({'animalid': row.animalid,
+                    'name': row.name,
+                    'datetime': week_day,
                     'holiday': holiday,
-                    'outcometype': row.outcometype, 
+                    'outcometype': row.outcometype,
                     'outcomesubtype': row.outcomesubtype,
-                    'animaltype': row.animaltype, 
-                    'sex': sex, 
+                    'animaltype': row.animaltype,
+                    'sex': sex,
                     'castration': castration,
-                    'ageuponoutcome': age_in_days, 
-                    'breed': row.breed, 
+                    'agegroup': age_group,
+                    'breed': row.breed,
                     'color': row.color})
 
 rows.export_to_csv(table_2, "train_cleaned.csv")
@@ -85,15 +106,15 @@ table3_fields = OrderedDict([
 table_3 = rows.Table(fields=table3_fields)
 for row in table_2:
     if len(row.name):
-        has_name = 'Yes' 
-    else: 
+        has_name = 'Yes'
+    else:
         has_name = 'No'
-    
-    if (row.datetime == "Sunday" or row.datetime == "Saturday" or row.holiday == 'True'): 
-        free_day = True 
-    else: 
+
+    if (row.datetime == "Sunday" or row.datetime == "Saturday" or row.holiday == 'True'):
+        free_day = True
+    else:
         free_day = False
-    
+
     table_3.append({
         'has_name': has_name,
         'free_day': free_day,

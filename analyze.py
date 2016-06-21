@@ -2,7 +2,6 @@
 
 from __future__ import division
 import rows
-import re
 
 table_3 = rows.import_from_csv('train_cleaned.csv')
 
