@@ -26,19 +26,26 @@ def get_animal_age(name):
 
 
 def get_cat_age_group(age):
+    # ate 1 ano
     if 0 <= age <= 365:
         return "kitten"
-    elif 365 <= age <= 2920:
+    # de 1 a 7 anos
+    elif 366 <= age <= 2920:
         return "adult"
+    # mais que 7 ano
     elif age > 2920:
         return "senior"
 
+
 def get_dog_age_group(age):
-    if 0 <= age <= 186:
+    # ate 1 ano
+    if 0 <= age <= 365:
         return "puppy"
-    elif 187 <= age <= 1094:
+    # de 1 a 8 anos
+    elif 366 <= age <= 3285:
         return "adult"
-    elif 1095 <= age <= 2554:
+    # mais que 8 anos
+    elif age > 3285:
         return "aging_dog"
 
 table_1 = rows.import_from_csv("train.csv")
