@@ -3,7 +3,7 @@
 from __future__ import division
 import rows
 
-table_3 = rows.import_from_csv('0cleaning/clean_data.csv')
+table_3 = rows.import_from_csv('../0cleaning/clean_data.csv')
 
 cats = filter(lambda r: r.animaltype == "Cat", table_3)
 dogs = filter(lambda r: r.animaltype == "Dog", table_3)
@@ -23,15 +23,28 @@ def filter_string(substrings, string):
 
 # cat_colors = set([cat.color for cat in cats])
 
-# print len(cat_colors) # 146
+# print(len(cat_colors)) # 146
 
 # know_colors = 'Blue Cream Lilac White Brown Gray Black Tan Flame Orange Buff Apricot Chocolate Smoke Yellow Pink Silver'.split()
 # know_patterns = 'Tabby Tortie Torbie Point Tiger Agouti Calico'.split()
-# know_names_in_cat_colors = 'Seam Tricolor Seal Lynx'.split() + know_colors + know_patterns
+# know_names_in_cat_colors = 'Tricolor Seal Lynx'.split() + know_colors + know_patterns
 
-# for color in cat_colors:
-#     print filter_string(know_names_in_cat_colors, color)
+# # for color in cat_colors:
+# #     print filter_string(know_names_in_cat_colors, color)
     
+# colors = []
+# for color in cat_colors:
+#     colors += color.split('/')
+
+# print(len(set(colors))) # 41
+
+# for color in sorted(set(colors)):
+#     print(color)
+    
+# for color in sorted(set(cat_colors)):
+#     if 'Seam' in color:
+#         print('>', color) 
+
 # Leia isso: http://img00.deviantart.net/d82c/i/2015/114/7/3/cat_color_chart_by_paintbean-d5c0dou.jpg
 
 # tabby == Agouti == Tiger é um gato com listras! 
@@ -119,7 +132,13 @@ def filter_string(substrings, string):
 # print len(cat_breeds) # 34
 
 # for breed in cat_breeds:
-#     print breed
+#     print(breed)
+
+# breeds = ""
+# for breed in cat_breeds:
+#     breeds += '"' + breed + '"' + ', '
+    
+# print(breeds)
 
 ##############################################
 # Breeds - Dogs
