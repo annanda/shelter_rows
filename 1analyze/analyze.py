@@ -2,13 +2,17 @@
 
 from __future__ import division
 import rows
-import re
 
 table_3 = rows.import_from_csv('../0cleaning/clean_data.csv')
 
 quantidade_de_exemplos = len(table_3)
 cats = filter(lambda row: row.animaltype == "Cat", table_3)
 cats_and_adoption = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Adoption", table_3)
+cats_and_transfer = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Transfer", table_3)
+cats_and_euthanasia = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Euthanasia", table_3)
+cats_and_died = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Died", table_3)
+cats_and_returned = filter(lambda row: row.animaltype == "Cat" and row.outcometype == "Return_to_owner", table_3)
+
 dogs = filter(lambda row: row.animaltype == "Dog", table_3)
 dogs_and_adoption = filter(lambda row: row.animaltype == "Dog" and row.outcometype == "Adoption", table_3)
 male = filter(lambda row: row.sex == "Male", table_3)
@@ -45,6 +49,24 @@ holidays_and_died = filter(lambda row: row.holiday == "True" and row.outcometype
 holidays_and_returned = filter(lambda row: row.holiday == "True" and row.outcometype == "Return_to_owner", table_3)
 holidays_and_weekend = filter(lambda row: row.holiday == "True" and (row.datetime == "Sunday" or row.datetime == "Saturday"), table_3)
 holidays_and_weekend_and_adoption = filter(lambda row: row.holiday == "True" and (row.datetime == "Sunday" or row.datetime == "Saturday") and row.outcometype == "Adoption", table_3)
+
+kitten = filter(lambda row: row.agegroup == "kitten" , table_3)
+kitten_and_adoption = filter(lambda row: row.agegroup == "kitten" and row.outcometype == "Adoption", table_3)
+kitten_and_transfer = filter(lambda row: row.agegroup == "kitten" and row.outcometype == "Transfer", table_3)
+kitten_and_euthanasia = filter(lambda row: row.agegroup == "kitten" and row.outcometype == "Euthanasia", table_3)
+kitten_and_died = filter(lambda row: row.agegroup == "kitten" and row.outcometype == "Died", table_3)
+kitten_and_returned = filter(lambda row: row.agegroup == "kitten" and row.outcometype == "Return_to_owner", table_3)
+adult_cat = filter(lambda row: row.agegroup == "adult" and row.animaltype == "Cat" , table_3)
+adult_cat_and_adoption = filter(lambda row: row.agegroup == "adult" and row.animaltype == "Cat" and row.outcometype == "Adoption" , table_3)
+senior = filter(lambda row: row.agegroup == "senior" , table_3)
+senior_and_adoption = filter(lambda row: row.agegroup == "senior" and row.outcometype == "Adoption" , table_3)
+puppy = filter(lambda row: row.agegroup == "puppy" , table_3)
+puppy_and_adoption = filter(lambda row: row.agegroup == "puppy" and row.outcometype == "Adoption" , table_3)
+adult_dog = filter(lambda row: row.agegroup == "adult" and row.animaltype == "Dog" , table_3)
+adult_dog_and_adoption = filter(lambda row: row.agegroup == "adult" and row.animaltype == "Dog" and row.outcometype == "Adoption", table_3)
+aging_dog = filter(lambda row: row.agegroup == "aging_dog" , table_3)
+aging_dog_and_adoption = filter(lambda row: row.agegroup == "aging_dog" and row.outcometype == "Adoption", table_3)
+aging_dog_and_adoption = filter(lambda row: row.agegroup == "aging_dog" and row.outcometype == "Adoption", table_3)
 
 
 print '--------------- Início da Análise -----------------------\n'
@@ -99,4 +121,30 @@ print 'Quantidade de animais femeas e adotados: {} --> {:.4g}%'.format(len(femal
 print 'Quantidade de animais com sexo desconhecido e adotados: {} --> {:.4g}%'.format(len(sex_unknown_and_adoption), len(sex_unknown_and_adoption)/len(adoption) *100)
 print '{:.4g}% das fêmeas foram adotadas'.format(len(female_and_adoption)/len(female) *100)
 print '{:.4g}% dos machos foram adotadas'.format(len(male_and_adoption)/len(male) *100)
+print '======================================================================================================'
+print '=========== Faixa etária: Gatos ======================================================================'
+print '{:.4g}% de kitten'.format(len(kitten)/len(cats) *100)
+print '{:.4g}% de adult'.format(len(adult_cat)/len(cats) *100)
+print '{:.4g}% de senior'.format(len(senior)/len(cats) *100)
+print '=========== Faixa etária e adoção: Gatos ============================================================='
+print '{:.4g}% dos adotados eram filhotes'.format(len(kitten_and_adoption)/len(cats_and_adoption) *100)
+print '{:.4g}% dos adotados eram adultos'.format(len(adult_cat_and_adoption)/len(cats_and_adoption) *100)
+print '{:.4g}% dos adotados eram idosos'.format(len(senior_and_adoption)/len(cats_and_adoption) *100)
+
+print '===========  Gatos Filhotes ============================================================='
+print '{:.4g}% dos filhotes foram adotados'.format(len(kitten_and_adoption)/len(kitten) *100)
+print '{:.4g}% dos filhotes foram mortos'.format(len(kitten_and_died)/len(kitten) *100)
+print '{:.4g}% dos filhotes foram transferidos'.format(len(kitten_and_transfer)/len(kitten) *100)
+print '{:.4g}% dos filhotes foram eutanasia'.format(len(kitten_and_euthanasia)/len(kitten) *100)
+print '{:.4g}% dos filhotes foram devolvido ao dono'.format(len(kitten_and_returned)/len(kitten) *100)
+
+print '=========== Faixa etária: cães ======================================================================='
+print '{:.4g}% de puppy'.format(len(puppy)/len(dogs) *100)
+print '{:.4g}% de adult'.format(len(adult_dog)/len(dogs) *100)
+print '{:.4g}% de aging dog'.format(len(aging_dog)/len(dogs) *100)
+
+print '=========== Faixa etária e adoção: Cães ============================================================='
+print '{:.4g}% dos adotados eram filhotes'.format(len(puppy_and_adoption)/len(dogs_and_adoption) *100)
+print '{:.4g}% dos adotados eram adultos'.format(len(adult_dog_and_adoption)/len(dogs_and_adoption) *100)
+print '{:.4g}% dos adotados eram idosos'.format(len(aging_dog_and_adoption)/len(dogs_and_adoption) *100)
 

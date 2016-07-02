@@ -23,6 +23,30 @@ def get_animal_age(name):
 
     return how_many * daysInPeriod
 
+
+def get_cat_age_group(age):
+    # ate 1 ano
+    if 0 <= age <= 365:
+        return "kitten"
+    # de 1 a 7 anos
+    elif 366 <= age <= 2920:
+        return "adult"
+    # mais que 7 ano
+    elif age > 2920:
+        return "senior"
+
+
+def get_dog_age_group(age):
+    # ate 1 ano
+    if 0 <= age <= 365:
+        return "puppy"
+    # de 1 a 8 anos
+    elif 366 <= age <= 3285:
+        return "adult"
+    # mais que 8 anos
+    elif age > 3285:
+        return "aging_dog"
+
 table_1 = rows.import_from_csv("../train.csv")
 
 new_fields = OrderedDict([
@@ -35,7 +59,7 @@ new_fields = OrderedDict([
     ('animaltype', rows.fields.UnicodeField),
     ('sex', rows.fields.UnicodeField),
     ('castration', rows.fields.UnicodeField),
-    ('ageuponoutcome', rows.fields.UnicodeField),
+    ('agegroup', rows.fields.UnicodeField),
     ('breed', rows.fields.UnicodeField),
     ('color', rows.fields.UnicodeField)
 ])
@@ -51,17 +75,21 @@ for row in table_1:
     us_holidays = holidays.UnitedStates()
     holiday = row.datetime in us_holidays
     age_in_days = get_animal_age(row.ageuponoutcome)
-    table_2.append({'animalid': row.animalid, 
-                    'name': row.name, 
-                    'datetime': week_day, 
+    if row.animaltype == "Cat":
+        age_group = get_cat_age_group(age_in_days)
+    else:
+        age_group = get_dog_age_group(age_in_days)
+    table_2.append({'animalid': row.animalid,
+                    'name': row.name,
+                    'datetime': week_day,
                     'holiday': holiday,
-                    'outcometype': row.outcometype, 
+                    'outcometype': row.outcometype,
                     'outcomesubtype': row.outcomesubtype,
-                    'animaltype': row.animaltype, 
-                    'sex': sex, 
+                    'animaltype': row.animaltype,
+                    'sex': sex,
                     'castration': castration,
-                    'ageuponoutcome': age_in_days, 
-                    'breed': row.breed, 
+                    'agegroup': age_group,
+                    'breed': row.breed,
                     'color': row.color})
 
 rows.export_to_csv(table_2, "clean_data.csv")

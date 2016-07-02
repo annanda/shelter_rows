@@ -3,7 +3,6 @@
 from __future__ import division
 from collections import OrderedDict
 import rows
-import re
 
 table = rows.import_from_csv('../0cleaning/clean_data2.csv')
 
