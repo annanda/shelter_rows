@@ -5,9 +5,8 @@ from collections import OrderedDict
 import rows
 import re
 
-table = rows.import_from_csv('train_cleaned_for_by_column_analize.csv')
+table = rows.import_from_csv('../0cleaning/clean_data2.csv')
 
-quantidade_de_exemplos = len(table)
 statistics = {}
 for row in table:
     drow = row.__dict__
@@ -21,17 +20,6 @@ for row in table:
         statistics[key][value] += 1
 
 string = rows.fields.UnicodeField
-table_output = rows.Table(fields=OrderedDict({'column': string, 'value': string, 'amount': string, 'percent': string}))
-for key in statistics.keys():
-    for value in statistics[key].keys():
-        table_output.append({
-            'column': key,
-            'value': value,
-            'amount': statistics[key][value],
-            'percent': "{0:.2f}".format(statistics[key][value] / quantidade_de_exemplos * 100)
-        })
-        
-rows.export_to_csv(table_output, '1d_column_analize.csv')
 
 columns = {}
 columns['value'] = string

@@ -3,7 +3,7 @@
 from __future__ import division
 import rows
 
-table_3 = rows.import_from_csv('train_cleaned.csv')
+table_3 = rows.import_from_csv('0cleaning/clean_data.csv')
 
 cats = filter(lambda r: r.animaltype == "Cat", table_3)
 dogs = filter(lambda r: r.animaltype == "Dog", table_3)
