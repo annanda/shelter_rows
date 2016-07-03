@@ -88,16 +88,25 @@ def filter_string(substrings, string):
 # Colors - Dogs
 ##############################################
 
-# dog_colors = set(map(lambda r: r.color, dogs))
+dog_colors = set(map(lambda r: r.color, dogs))
 
-# print len(dog_colors) # 262
+print len(dog_colors) # 262
 
-# know_colors = 'Pink Ruddy Fawn Liver Smoke Orange Apricot Yellow White Brown Silver Black Cream Gold Grey Red Blue Buff Tan Chocolate Gray'.split()
-# know_patterns = 'Merle Brindle Sable Tiger Tick'.split()
-# know_names_in_dog_colors = 'Tabby Tricolor'.split() + know_colors + know_patterns
+know_colors = 'Pink Ruddy Fawn Liver Smoke Orange Apricot Yellow White Brown Silver Black Cream Gold Grey Red Blue Buff Tan Chocolate Gray'.split()
+know_patterns = 'Merle Brindle Sable Tiger Tick'.split()
+know_names_in_dog_colors = 'Tabby Tricolor'.split() + know_colors + know_patterns
 
-# for color in dog_colors:
-#     print filter_string(know_names_in_dog_colors, color)
+for color in dog_colors:
+    print filter_string(know_names_in_dog_colors, color)
+
+colors = []
+for color in dog_colors:
+    colors += color.split('/')
+
+colors = sorted(set(colors))
+
+for color in colors:
+    print color
 
 # Liver(Fígado) é um cor. Também conhecida como Chocolate
 # http://www.caninest.com/dog-coat-patterns/
@@ -158,5 +167,10 @@ def filter_string(substrings, string):
 
 # print len(dog_breeds) # 191
 
-# for breed in dog_breeds:
+# for breed in sorted(dog_breeds):
 #     print breed
+
+# #s =''
+# #for breed in dog_breeds:
+# #    s += '"' + breed + '",'
+# #print s
