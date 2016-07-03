@@ -1,3 +1,5 @@
 *.idea
 *.pyc
 *__pycache__
+0cleaning/*.csv
+1analyze/*.csv
