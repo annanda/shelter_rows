@@ -223,141 +223,142 @@ def get_animal_outcome(row):
 # Columns in train.csv
 # AnimalID,Name,DateTime,OutcomeType,OutcomeSubtype,AnimalType,SexuponOutcome,AgeuponOutcome,Breed,Color
 
-table_from = rows.import_from_csv("../train.csv")
-
-new_cat_rows = []
-new_dog_rows = []
-for row in table_from:
-    new_row = OrderedDict()
-    
-    # AnimalID: não deve ser importante
-    
-    # Name: só interessa se tem ou não nome, não que nome é
-    new_row['has_name'] = get_animal_has_name(row)
-    
-    # DateTime: só interessa se é feriado ou não, não qual data especifica é
-    new_row['is_free_day'] = get_animal_is_free_day(row)
-    
-    # OutcomeType é o que queremos prever
-    #new_row['outcome_text'] = row.outcometype
-    
-    # OutcomeSubtype: não disponivel no conjunto de teste, nem é pedido que seja previsto
-    # AnimalType: Vamos criar tabelas separadas para cada tipo de animal
-    
-    # SexuponOutcome: separamos em sexo e castração. Criamos um coluna por tipo de cada
-    #new_row['sex'] = row.sexuponoutcome
-    new_row.update(get_animal_castration_columns(row))
-    new_row.update(get_animal_sex_columns(row))
-    
-    ### Essas dependem de ser gato ou cachorro
-    
-    # AgeuponOutcome: separamos em grupos de idade e criamos uma coluna para cada
-    #new_row['age'] = row.ageuponoutcome
-    
-    # Breed: Uma coluna para cada
-    #new_row['breed'] = row.breed
-    
-    # Color: uma coluna para cada cor e padrão
-    # new_row['color'] = row.color
-    
-    if row.animaltype == 'Cat':
-        new_row.update(get_cat_age_columns(row))
-        new_row.update(get_cat_breed_columns(row))
-        new_row.update(get_cat_color_columns(row))
-        
-        new_row['outcome'] = get_animal_outcome(row)
-        
-        new_cat_rows.append(new_row)
-    
-    if row.animaltype == 'Dog':
-        new_row.update(get_dog_age_columns(row))
-        # Demora muito
-        new_row.update(get_dog_breed_columns(row))
-        new_row.update(get_dog_color_columns(row))
-        
-        new_row['outcome'] = get_animal_outcome(row)
-        
-        new_dog_rows.append(new_row)
-
-new_fields = [(key, rows.fields.UnicodeField) for key in new_cat_rows[0].keys()]
-table_to = rows.Table(fields=OrderedDict(new_fields))
-for row in new_cat_rows:
-    table_to.append(row)
-    
-rows.export_to_csv(table_to, "clean_data3_cat.csv")
-
-new_fields = [(key, rows.fields.UnicodeField) for key in new_dog_rows[0].keys()]
-table_to = rows.Table(fields=OrderedDict(new_fields))
-for row in new_dog_rows:
-    table_to.append(row)
-    
-rows.export_to_csv(table_to, "clean_data3_dog.csv")
-
-##################
-# Limpando dados de teste
-##################
-
-
-# table_from = rows.import_from_csv("../test.csv")
+# table_from = rows.import_from_csv("../train.csv")
 
 # new_cat_rows = []
 # new_dog_rows = []
 # for row in table_from:
 #     new_row = OrderedDict()
-
+    
 #     # AnimalID: não deve ser importante
-
+    
 #     # Name: só interessa se tem ou não nome, não que nome é
 #     new_row['has_name'] = get_animal_has_name(row)
-
+    
 #     # DateTime: só interessa se é feriado ou não, não qual data especifica é
 #     new_row['is_free_day'] = get_animal_is_free_day(row)
-
+    
 #     # OutcomeType é o que queremos prever
+#     #new_row['outcome_text'] = row.outcometype
+    
 #     # OutcomeSubtype: não disponivel no conjunto de teste, nem é pedido que seja previsto
 #     # AnimalType: Vamos criar tabelas separadas para cada tipo de animal
-
+    
 #     # SexuponOutcome: separamos em sexo e castração. Criamos um coluna por tipo de cada
-#     # new_row['sex'] = row.sexuponoutcome
+#     #new_row['sex'] = row.sexuponoutcome
 #     new_row.update(get_animal_castration_columns(row))
 #     new_row.update(get_animal_sex_columns(row))
-
+    
 #     ### Essas dependem de ser gato ou cachorro
-
+    
 #     # AgeuponOutcome: separamos em grupos de idade e criamos uma coluna para cada
-#     # new_row['age'] = row.ageuponoutcome
-
+#     #new_row['age'] = row.ageuponoutcome
+    
 #     # Breed: Uma coluna para cada
-#     # new_row['breed'] = row.breed
-
+#     #new_row['breed'] = row.breed
+    
 #     # Color: uma coluna para cada cor e padrão
 #     # new_row['color'] = row.color
-
+    
 #     if row.animaltype == 'Cat':
 #         new_row.update(get_cat_age_columns(row))
 #         new_row.update(get_cat_breed_columns(row))
 #         new_row.update(get_cat_color_columns(row))
-
+        
+#         new_row['outcome'] = get_animal_outcome(row)
+        
 #         new_cat_rows.append(new_row)
-
+    
 #     if row.animaltype == 'Dog':
 #         new_row.update(get_dog_age_columns(row))
 #         # Demora muito
 #         new_row.update(get_dog_breed_columns(row))
 #         new_row.update(get_dog_color_columns(row))
-
+        
+#         new_row['outcome'] = get_animal_outcome(row)
+        
 #         new_dog_rows.append(new_row)
 
 # new_fields = [(key, rows.fields.UnicodeField) for key in new_cat_rows[0].keys()]
 # table_to = rows.Table(fields=OrderedDict(new_fields))
 # for row in new_cat_rows:
 #     table_to.append(row)
-
-# rows.export_to_csv(table_to, "clean_data3_cat_test.csv")
+    
+# rows.export_to_csv(table_to, "clean_data3_cat.csv")
 
 # new_fields = [(key, rows.fields.UnicodeField) for key in new_dog_rows[0].keys()]
 # table_to = rows.Table(fields=OrderedDict(new_fields))
 # for row in new_dog_rows:
 #     table_to.append(row)
+    
+# rows.export_to_csv(table_to, "clean_data3_dog.csv")
 
-# rows.export_to_csv(table_to, "clean_data3_dog_test.csv")
+##################
+# Limpando dados de teste
+##################
+
+
+table_from = rows.import_from_csv("../test.csv")
+
+new_cat_rows = []
+new_dog_rows = []
+for row in table_from:
+    new_row = OrderedDict()
+
+    # AnimalID: importante no teste para que a gente possa juntar os dois datasets (gatos e cachorros) novamente
+    new_row['id'] = row.id
+
+    # Name: só interessa se tem ou não nome, não que nome é
+    new_row['has_name'] = get_animal_has_name(row)
+
+    # DateTime: só interessa se é feriado ou não, não qual data especifica é
+    new_row['is_free_day'] = get_animal_is_free_day(row)
+
+    # OutcomeType é o que queremos prever
+    # OutcomeSubtype: não disponivel no conjunto de teste, nem é pedido que seja previsto
+    # AnimalType: Vamos criar tabelas separadas para cada tipo de animal
+
+    # SexuponOutcome: separamos em sexo e castração. Criamos um coluna por tipo de cada
+    # new_row['sex'] = row.sexuponoutcome
+    new_row.update(get_animal_castration_columns(row))
+    new_row.update(get_animal_sex_columns(row))
+
+    ### Essas dependem de ser gato ou cachorro
+
+    # AgeuponOutcome: separamos em grupos de idade e criamos uma coluna para cada
+    # new_row['age'] = row.ageuponoutcome
+
+    # Breed: Uma coluna para cada
+    # new_row['breed'] = row.breed
+
+    # Color: uma coluna para cada cor e padrão
+    # new_row['color'] = row.color
+
+    if row.animaltype == 'Cat':
+        new_row.update(get_cat_age_columns(row))
+        new_row.update(get_cat_breed_columns(row))
+        new_row.update(get_cat_color_columns(row))
+
+        new_cat_rows.append(new_row)
+
+    if row.animaltype == 'Dog':
+        new_row.update(get_dog_age_columns(row))
+        # Demora muito
+        new_row.update(get_dog_breed_columns(row))
+        new_row.update(get_dog_color_columns(row))
+
+        new_dog_rows.append(new_row)
+
+new_fields = [(key, rows.fields.UnicodeField) for key in new_cat_rows[0].keys()]
+table_to = rows.Table(fields=OrderedDict(new_fields))
+for row in new_cat_rows:
+    table_to.append(row)
+
+rows.export_to_csv(table_to, "clean_data3_cat_test.csv")
+
+new_fields = [(key, rows.fields.UnicodeField) for key in new_dog_rows[0].keys()]
+table_to = rows.Table(fields=OrderedDict(new_fields))
+for row in new_dog_rows:
+    table_to.append(row)
+
+rows.export_to_csv(table_to, "clean_data3_dog_test.csv")
