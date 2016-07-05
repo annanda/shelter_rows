@@ -131,7 +131,30 @@ def get_dog_breed_columns(row):
     # Mix foi incluido para facilitar o algoritmo, mas tecnicamente não é uma raça por si só
     know_breeds = [
         "Mix",
-        "American Staffordshire Terrier","English Pointer","Unknown","Bedlington Terr","Smooth Fox Terrier","Basenji","Black Mouth Cur","Leonberger","Norwegian Elkhound","Canaan Dog","Beauceron","Schipperke","American Bulldog","Redbone Hound","Cane Corso","Afghan Hound","Cocker Spaniel","Treeing Tennesse Brindle","American Pit Bull Terrier","Patterdale Terr","Queensland Heeler","Havanese","Miniature Schnauzer","Spinone Italiano","English Cocker Spaniel","English Setter","Irish Setter","Australian Cattle Dog","Manchester Terrier","Yorkshire Terrier","Brittany","Pharaoh Hound","Swedish Vallhund","Otterhound","Alaskan Husky","Yorkshire","Parson Russell Terrier","Saluki","Greater Swiss Mountain Dog","Shih Tzu","Greyhound","Swiss Hound","Ibizan Hound","Norwich Terrier","Presa Canario","Shiba Inu","Flat Coat Retriever","Airedale Terrier","Pekingese","Weimaraner","Shetland Sheepdog","Samoyed","Jack Russell Terrier","Glen Of Imaal","Entlebucher","Soft Coated Wheaten Terrier","Standard Poodle","Landseer","Great Pyrenees","Carolina Dog","Port Water Dog","Jindo","Boston Terrier","Schnauzer Giant","Pug","Belgian Tervuren","Belgian Malinois","Finnish Spitz","Irish Terrier","Feist","Collie Rough","Welsh Springer Spaniel","Collie Smooth","Dalmatian","Standard Schnauzer","Doberman Pinsch","Bull Terrier Miniature","St. Bernard Rough Coat","Borzoi","Staffordshire","Affenpinscher","Welsh Terrier","Norfolk Terrier","Rat Terrier","Spanish Water Dog","Border Collie","Lowchen","West Highland","American Foxhound","Labrador Retriever","German Shepherd","Bullmastiff","Mexican Hairless","Podengo Pequeno","Basset Hound","Australian Terrier","Field Spaniel","Pointer","Dachshund","Keeshond","Picardy Sheepdog","Siberian Husky","Hovawart","Dogo Argentino","Rhod Ridgeback","Bichon Frise","Black","Kuvasz","Cairn Terrier","Vizsla","Wire Hair Fox Terrier","Dachshund Wirehair","Irish Wolfhound","Pomeranian","Toy Fox Terrier","Bulldog","American Eskimo","Italian Greyhound","Newfoundland","Wirehaired Pointing Griffon","Boxer","Golden Retriever","English Foxhound","Treeing Cur","Catahoula","Pbgv","Chow Chow","Bloodhound","German Pinscher","English Shepherd","Australian Kelpie","Miniature Poodle","Whippet","Pembroke Welsh Corgi","Bruss Griffon","Harrier","Miniature Pinscher","Skye Terrier","Anatol Shepherd","Neapolitan Mastiff","Chihuahua Shorthair","Old English Bulldog","Akita","Bluetick Hound","English Coonhound","Boerboel","Lhasa Apso","Cavalier Span","Tibetan Spaniel","Rottweiler","English Springer Spaniel","Chihuahua Longhair","Papillon","Belgian Sheepdog","Plott Hound","Australian Shepherd","Japanese Chin","Beagle","Tibetan Terrier","Nova Scotia Duck Tolling Retriever","Bernese Mountain Dog","German Wirehaired Pointer","Alaskan Malamute","Spanish Mastiff","Dogue De Bordeaux","Scottish Terrier","French Bulldog","Sealyham Terr","English Bulldog","Tan Hound","Border Terrier","Maltese","Bearded Collie","Silky Terrier","Mastiff","Bull Terrier","Chinese Crested","Great Dane","Dutch Shepherd","Cardigan Welsh Corgi","German Shorthair Pointer","Chinese Sharpei","Blue Lacy","St. Bernard Smooth Coat","Pit Bull","Treeing Walker Coonhound","Chesa Bay Retr","Old English Sheepdog","Toy Poodle","Dachshund Longhair","Boykin Span",]
+        "American Staffordshire Terrier","English Pointer","Unknown","Bedlington Terr","Smooth Fox Terrier","Basenji","Black Mouth Cur",
+        "Leonberger","Norwegian Elkhound","Canaan Dog","Beauceron","Schipperke","American Bulldog","Redbone Hound","Cane Corso","Afghan Hound",
+        "Cocker Spaniel","Treeing Tennesse Brindle","American Pit Bull Terrier","Patterdale Terr","Queensland Heeler","Havanese","Miniature Schnauzer",
+        "Spinone Italiano","English Cocker Spaniel","English Setter","Irish Setter","Australian Cattle Dog","Manchester Terrier","Yorkshire Terrier",
+        "Brittany","Pharaoh Hound","Swedish Vallhund","Otterhound","Alaskan Husky","Yorkshire","Parson Russell Terrier","Saluki",
+        "Greater Swiss Mountain Dog","Shih Tzu","Greyhound","Swiss Hound","Ibizan Hound","Norwich Terrier","Presa Canario","Shiba Inu",
+        "Flat Coat Retriever","Airedale Terrier","Pekingese","Weimaraner","Shetland Sheepdog","Samoyed","Jack Russell Terrier",
+        "Glen Of Imaal","Entlebucher","Soft Coated Wheaten Terrier","Standard Poodle","Landseer","Great Pyrenees","Carolina Dog",
+        "Port Water Dog","Jindo","Boston Terrier","Schnauzer Giant","Pug","Belgian Tervuren","Belgian Malinois","Finnish Spitz","Irish Terrier",
+        "Feist","Collie Rough","Welsh Springer Spaniel","Collie Smooth","Dalmatian","Standard Schnauzer","Doberman Pinsch","Bull Terrier Miniature",
+        "St Bernard Rough Coat","Borzoi","Staffordshire","Affenpinscher","Welsh Terrier","Norfolk Terrier","Rat Terrier","Spanish Water Dog","Border Collie","Lowchen",
+        "West Highland","American Foxhound","Labrador Retriever","German Shepherd","Bullmastiff","Mexican Hairless","Podengo Pequeno","Basset Hound",
+        "Australian Terrier","Field Spaniel","Pointer","Dachshund","Keeshond","Picardy Sheepdog","Siberian Husky","Hovawart","Dogo Argentino",
+        "Rhod Ridgeback","Bichon Frise","Black","Kuvasz","Cairn Terrier","Vizsla","Wire Hair Fox Terrier","Dachshund Wirehair","Irish Wolfhound",
+        "Pomeranian","Toy Fox Terrier","Bulldog","American Eskimo","Italian Greyhound","Newfoundland","Wirehaired Pointing Griffon","Boxer",
+        "Golden Retriever","English Foxhound","Treeing Cur","Catahoula","Pbgv","Chow Chow","Bloodhound","German Pinscher","English Shepherd",
+        "Australian Kelpie","Miniature Poodle","Whippet","Pembroke Welsh Corgi","Bruss Griffon","Harrier","Miniature Pinscher","Skye Terrier",
+        "Anatol Shepherd","Neapolitan Mastiff","Chihuahua Shorthair","Old English Bulldog","Akita","Bluetick Hound","English Coonhound","Boerboel",
+        "Lhasa Apso","Cavalier Span","Tibetan Spaniel","Rottweiler","English Springer Spaniel","Chihuahua Longhair","Papillon","Belgian Sheepdog",
+        "Plott Hound","Australian Shepherd","Japanese Chin","Beagle","Tibetan Terrier","Nova Scotia Duck Tolling Retriever","Bernese Mountain Dog",
+        "German Wirehaired Pointer","Alaskan Malamute","Spanish Mastiff","Dogue De Bordeaux","Scottish Terrier","French Bulldog","Sealyham Terr","English Bulldog",
+        "Tan Hound","Border Terrier","Maltese","Bearded Collie","Silky Terrier","Mastiff","Bull Terrier","Chinese Crested","Great Dane","Dutch Shepherd","Cardigan Welsh Corgi",
+        "German Shorthair Pointer","Chinese Sharpei","Blue Lacy","St Bernard Smooth Coat","Pit Bull","Treeing Walker Coonhound","Chesa Bay Retr","Old English Sheepdog",
+        "Toy Poodle","Dachshund Longhair","Boykin Span",]
     column_titles = know_breeds
     
     columns = OrderedDict()
@@ -234,7 +257,7 @@ for row in table_from:
     if row.animaltype == 'Dog':
         new_row.update(get_dog_age_columns(row))
         # Demora muito
-        # new_row.update(get_dog_breed_columns(row))
+        new_row.update(get_dog_breed_columns(row))
         new_row.update(get_dog_color_columns(row))
         
         new_dog_rows.append(new_row)
