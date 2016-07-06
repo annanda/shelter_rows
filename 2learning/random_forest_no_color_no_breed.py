@@ -14,20 +14,10 @@ cat_testset = AnimalTestDataset("../0cleaning/clean_data3_no_color_no_breed_cat_
 #print(dataset.y)
 #print(cat_testset.x)
 
-clf = RandomForestClassifier(n_estimators=10, max_depth=None)
+clf = RandomForestClassifier(max_depth=None, min_samples_split=1, random_state=0)
 
 clf.fit(dataset.x, dataset.y)
 predictions_on_cats = clf.predict_proba(cat_testset.x)
-
-# print(predictions_on_cats[:10])
-# print(predictions_on_cats[0])
-# print(metrics.log_loss([0,1,2,3,4], [
-#     [0.03311674, 0.00593418, 0.7308754, 0.22773605, 0.00233763],
-#     [0.03311674, 0.00593418, 0.7308754, 0.22773605, 0.00233763],
-#     [0.03311674, 0.00593418, 0.7308754, 0.22773605, 0.00233763],
-#     [0.03311674, 0.00593418, 0.7308754, 0.22773605, 0.00233763],
-#     [0.03311674, 0.00593418, 0.7308754, 0.22773605, 0.00233763]
-# ]))
 
 # print(predictions_on_cats)
 # print(len(cat_testset.x))
@@ -46,7 +36,7 @@ dog_testset = AnimalTestDataset("../0cleaning/clean_data3_no_color_no_breed_dog_
 #print(dataset.y)
 #print(dog_testset.x)
 
-clf = RandomForestClassifier(n_estimators=10, max_depth=None)
+clf = DecisionTreeClassifier()
 
 clf.fit(dataset.x, dataset.y)
 predictions_on_dogs = clf.predict_proba(dog_testset.x)
