@@ -92,8 +92,8 @@ class AnimalTestDataset:
             # print(prediction[0])
             # print(type(prediction[0]))
             
-            if max(predictions) == prediction[4]:
-                print('Died e o maior')
+            # if max(predictions) == prediction[4]:
+            #     print('Died e o maior')
             
             new_row['ID'] = ids[i]
             new_row['Adoption'] = prediction[2]

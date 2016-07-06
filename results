@@ -77,3 +77,9 @@ Logloss (gradientboosting) on dogs: -1.02 (+/- 0.01)
 
 Logloss (gradientboosting learning_rate=0.3) on cats: -0.69 (+/- 0.03)
 Logloss (gradientboosting learning_rate=0.3) on dogs: -1.02 (+/- 0.02)
+
+Logloss (gradientboosting learning_rate=0.9) on cats: -0.70 (+/- 0.03)
+Logloss (gradientboosting learning_rate=0.9) on dogs: -1.03 (+/- 0.02)
+
+Logloss (gradientboosting n_estimators=500) on cats: -0.69 (+/- 0.03)
+Logloss (gradientboosting n_estimators=500) on dogs: -1.02 (+/- 0.02)
