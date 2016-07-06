@@ -1,6 +1,7 @@
 import csv
 from collections import OrderedDict
 import rows
+import numpy
 
 class AnimalDataset:
     
@@ -82,6 +83,8 @@ class AnimalTestDataset:
         #     'Died': 4
         # }
         #print(predictions)
+        count = [0, 0, 0, 0]
+        m = []
         for i, prediction in enumerate(predictions):
             #ID	Adoption	Died	Euthanasia	Return_to_owner	Transfer
             # print(type(prediction))
@@ -91,9 +94,16 @@ class AnimalTestDataset:
             new_row = OrderedDict({})
             # print(prediction[0])
             # print(type(prediction[0]))
-            
-            if max(predictions) == prediction[4]:
-                print('Died e o maior')
+            print numpy.argmax(prediction)
+            m.append(numpy.argmax(prediction))
+            if numpy.argmax(prediction) == 0:
+                count[0]+=1
+            if numpy.argmax(prediction) == 1:
+                count[1]+=1
+            if numpy.argmax(prediction) == 2:
+                count[2]+=1
+            if numpy.argmax(prediction) == 3:
+                count[3]+=1
             
             new_row['ID'] = ids[i]
             new_row['Adoption'] = prediction[2]
@@ -103,7 +113,8 @@ class AnimalTestDataset:
             new_row['Transfer'] = prediction[3]
             
             new_rows.append(new_row)
-            
+        print(count)
+        print(set(m))
         new_rows.sort(key=lambda e: e['ID'])
         #print(new_rows)
         
