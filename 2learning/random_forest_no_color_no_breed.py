@@ -16,8 +16,8 @@ def try_classifier(clf, tag):
     clf.fit(dataset.x, dataset.y)
     predictions_on_cats = clf.predict_proba(cat_testset.x)
     
-    #scores = cross_val_score(clf, dataset.x, dataset.y, cv=5, scoring='log_loss')
-    #print("Logloss (%s) on cats: %0.2f (+/- %0.2f)" % (tag, scores.mean(), scores.std() * 2))
+    scores = cross_val_score(clf, dataset.x, dataset.y, cv=5, scoring='log_loss')
+    print("Logloss (%s) on cats: %0.2f (+/- %0.2f)" % (tag, scores.mean(), scores.std() * 2))
     
     ###########################################
     
@@ -27,8 +27,8 @@ def try_classifier(clf, tag):
     clf.fit(dataset.x, dataset.y)
     predictions_on_dogs = clf.predict_proba(dog_testset.x)
     
-    #scores = cross_val_score(clf, dataset.x, dataset.y, cv=5, scoring='log_loss')
-    #print("Logloss (%s) on dogs: %0.2f (+/- %0.2f)" % (tag, scores.mean(), scores.std() * 2))
+    scores = cross_val_score(clf, dataset.x, dataset.y, cv=5, scoring='log_loss')
+    print("Logloss (%s) on dogs: %0.2f (+/- %0.2f)" % (tag, scores.mean(), scores.std() * 2))
     
     dog_testset.export_prob_predictions_to_csv(output_file+'_'+tag+'.csv', cat_testset.ids + dog_testset.ids, list(predictions_on_cats) + list(predictions_on_dogs))
 
@@ -54,10 +54,10 @@ def try_classifier(clf, tag):
 # try_classifier(RandomForestClassifier(max_features='log2'), 'randomforest_max_features_log2')
 # try_classifier(RandomForestClassifier(max_features=None), 'randomforest_max_features_None')
 
-#try_classifier(RandomForestClassifier(), 'randomforest')
+# try_classifier(RandomForestClassifier(), 'randomforest')
 # try_classifier(RandomForestClassifier(n_estimators=1000), 'randomforest_n_estimators_1000')
 
-#try_classifier(RandomForestClassifier(), 'randomforest')
+# try_classifier(RandomForestClassifier(), 'randomforest')
 # try_classifier(RandomForestClassifier(n_estimators=2000), 'randomforest_n_estimators_2000')
 # try_classifier(RandomForestClassifier(n_estimators=1000, min_samples_split=5), 'randomforest_n_estimators_1000_split_3')
 
