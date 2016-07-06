@@ -90,5 +90,5 @@ def try_classifier(clf, tag):
 # try_classifier(GradientBoostingClassifier(learning_rate=0.9), 'gradientboosting')
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting')
 
-try_classifier(GradientBoostingClassifier(max_depth=4), 'gradientboosting')
+try_classifier(GradientBoostingClassifier(), 'gradientboosting')
 
