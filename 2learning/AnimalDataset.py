@@ -34,7 +34,7 @@ class AnimalTestDataset:
                 self.x.append(example)
                 self.ids.append(idi)
                 
-    def export_exact_predictions_to_csv(self, ids, predictions):
+    def export_exact_predictions_to_csv(self, filename, ids, predictions):
         new_rows = []
         
         # classifier = {
@@ -69,4 +69,43 @@ class AnimalTestDataset:
         for row in new_rows:
             table_to.append(row)
             
-        rows.export_to_csv(table_to, "random_forest_prediction.csv")
+        rows.export_to_csv(table_to, filename)
+
+    def export_prob_predictions_to_csv(self, filename, ids, predictions):
+        new_rows = []
+        
+        # classifier = {
+        #     'Return_to_owner': 0,
+        #     'Euthanasia': 1,
+        #     'Adoption': 2,
+        #     'Transfer': 3,
+        #     'Died': 4
+        # }
+        #print(predictions)
+        for i, prediction in enumerate(predictions):
+            #ID	Adoption	Died	Euthanasia	Return_to_owner	Transfer
+            # print(type(prediction))
+            # print(prediction == '3')
+            # print(int(prediction == '3'))
+            
+            new_row = OrderedDict({})
+            # print(prediction[0])
+            # print(type(prediction[0]))
+            new_row['ID'] = ids[i]
+            new_row['Adoption'] = prediction[2]
+            new_row['Died'] = prediction[4]
+            new_row['Euthanasia'] = prediction[1]
+            new_row['Return_to_owner'] = prediction[0]
+            new_row['Transfer'] = prediction[3]
+            
+            new_rows.append(new_row)
+            
+        new_rows.sort(key=lambda e: e['ID'])
+        #print(new_rows)
+        
+        new_fields = [(key, rows.fields.UnicodeField) for key in new_rows[0].keys()]
+        table_to = rows.Table(fields=OrderedDict(new_fields))
+        for row in new_rows:
+            table_to.append(row)
+            
+        rows.export_to_csv(table_to, filename)
