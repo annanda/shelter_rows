@@ -94,6 +94,7 @@ class AnimalTestDataset:
             new_row = OrderedDict({})
             # print(prediction[0])
             # print(type(prediction[0]))
+
             print numpy.argmax(prediction)
             m.append(numpy.argmax(prediction))
             if numpy.argmax(prediction) == 0:

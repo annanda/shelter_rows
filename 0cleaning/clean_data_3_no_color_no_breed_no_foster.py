@@ -402,11 +402,11 @@ table_to = rows.Table(fields=OrderedDict(new_fields))
 for row in new_cat_rows:
     table_to.append(row)
 
-rows.export_to_csv(table_to, "clean_data3_no_color_no_breed_cat_test.csv")
+rows.export_to_csv(table_to, "clean_data3_no_color_no_breed_no_foster_cat_test.csv")
 
 new_fields = [(key, rows.fields.UnicodeField) for key in new_dog_rows[0].keys()]
 table_to = rows.Table(fields=OrderedDict(new_fields))
 for row in new_dog_rows:
     table_to.append(row)
 
-rows.export_to_csv(table_to, "clean_data3_no_color_no_breed_dog_test.csv")
+rows.export_to_csv(table_to, "clean_data3_no_color_no_breed_no_foster_dog_test.csv")
