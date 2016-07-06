@@ -1,11 +1,14 @@
 Logloss (decisiontree) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree) on dogs: -1.09 (+/- 0.06)
+
 Logloss (decisiontree_min_samples_split_1) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_min_samples_split_1) on dogs: -1.09 (+/- 0.06)
+
 Logloss (decisiontree_max_features_1) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_max_features_1) on dogs: -1.09 (+/- 0.06)
 Logloss (decisiontree_max_features_3) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_max_features_3) on dogs: -1.09 (+/- 0.06)
+
 Logloss (decisiontree_max_features_auto) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_max_features_auto) on dogs: -1.09 (+/- 0.06)
 Logloss (decisiontree_max_features_sqrt) on cats: -0.83 (+/- 0.12)
@@ -14,20 +17,25 @@ Logloss (decisiontree_max_features_log2) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_max_features_log2) on dogs: -1.09 (+/- 0.06)
 Logloss (decisiontree_max_features_None) on cats: -0.83 (+/- 0.13)
 Logloss (decisiontree_max_features_None) on dogs: -1.09 (+/- 0.06)
+
 Logloss (randomforest) on cats: -0.82 (+/- 0.12)
 Logloss (randomforest) on dogs: -1.08 (+/- 0.07)
+
 Logloss (randomforest_n_estimators_100) on cats: -0.81 (+/- 0.12)
 Logloss (randomforest_n_estimators_100) on dogs: -1.08 (+/- 0.07)
 Logloss (randomforest_n_estimators_1000) on cats: -0.79 (+/- 0.08)
 Logloss (randomforest_n_estimators_1000) on dogs: -1.07 (+/- 0.06)
+
 Logloss (randomforest_n_estimators_1000_min_samples_split_1) on cats: -0.79 (+/- 0.08)
 Logloss (randomforest_n_estimators_1000_min_samples_split_1) on dogs: -1.08 (+/- 0.06)
 Logloss (randomforest_n_estimators_1000_min_samples_split_3) on cats: -0.79 (+/- 0.08)
 Logloss (randomforest_n_estimators_1000_min_samples_split_3) on dogs: -1.08 (+/- 0.06)
+
 Logloss (randomforest_max_features_1) on cats: -0.82 (+/- 0.11)
 Logloss (randomforest_max_features_1) on dogs: -1.08 (+/- 0.06)
 Logloss (randomforest_max_features_3) on cats: -0.82 (+/- 0.11)
 Logloss (randomforest_max_features_3) on dogs: -1.08 (+/- 0.07)
+
 Logloss (randomforest_max_features_auto) on cats: -0.82 (+/- 0.12)
 Logloss (randomforest_max_features_auto) on dogs: -1.08 (+/- 0.07)
 Logloss (randomforest_max_features_sqrt) on cats: -0.82 (+/- 0.12)
@@ -36,20 +44,25 @@ Logloss (randomforest_max_features_log2) on cats: -0.82 (+/- 0.12)
 Logloss (randomforest_max_features_log2) on dogs: -1.08 (+/- 0.07)
 Logloss (randomforest_max_features_None) on cats: -0.82 (+/- 0.11)
 Logloss (randomforest_max_features_None) on dogs: -1.08 (+/- 0.06)
+
 Logloss (extratrees) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees) on dogs: -1.09 (+/- 0.06)
+
 Logloss (extratrees_n_estimators_1000) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_n_estimators_1000) on dogs: -1.09 (+/- 0.06)
 Logloss (extratrees_n_estimators_3000) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_n_estimators_3000) on dogs: -1.09 (+/- 0.06)
+
 Logloss (extratrees_n_estimators_1000_min_samples_split_1) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_n_estimators_1000_min_samples_split_1) on dogs: -1.09 (+/- 0.06)
 Logloss (extratrees_n_estimators_1000_min_samples_split_1) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_n_estimators_1000_min_samples_split_1) on dogs: -1.08 (+/- 0.06)
+
 Logloss (extratrees_max_features_1) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_max_features_1) on dogs: -1.09 (+/- 0.06)
 Logloss (extratrees_max_features_3) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_max_features_3) on dogs: -1.09 (+/- 0.06)
+
 Logloss (extratrees_max_features_auto) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_max_features_auto) on dogs: -1.09 (+/- 0.06)
 Logloss (extratrees_max_features_sqrt) on cats: -0.82 (+/- 0.12)
@@ -58,5 +71,9 @@ Logloss (extratrees_max_features_log2) on cats: -0.82 (+/- 0.12)
 Logloss (extratrees_max_features_log2) on dogs: -1.09 (+/- 0.06)
 Logloss (extratrees_max_features_None) on cats: -0.83 (+/- 0.13)
 Logloss (extratrees_max_features_None) on dogs: -1.09 (+/- 0.06)
+
 Logloss (gradientboosting) on cats: -0.68 (+/- 0.02)
 Logloss (gradientboosting) on dogs: -1.02 (+/- 0.01)
+
+Logloss (gradientboosting learning_rate=0.3) on cats: -0.69 (+/- 0.03)
+Logloss (gradientboosting learning_rate=0.3) on dogs: -1.02 (+/- 0.02)
