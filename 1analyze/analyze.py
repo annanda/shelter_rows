@@ -68,6 +68,9 @@ aging_dog = filter(lambda row: row.agegroup == "aging_dog" , table_3)
 aging_dog_and_adoption = filter(lambda row: row.agegroup == "aging_dog" and row.outcometype == "Adoption", table_3)
 aging_dog_and_adoption = filter(lambda row: row.agegroup == "aging_dog" and row.outcometype == "Adoption", table_3)
 
+adoption_and_foster = filter(lambda row: row.outcometype == "Adoption" and row.outcomesubtype == "Foster", table_3)
+adoption_and_foster_2 = filter(lambda row: row.outcometype == "Adoption" and row.outcomesubtype == "In Foster", table_3)
+
 
 print '--------------- Início da Análise -----------------------\n'
 print 'Quantidade de exemplos: {}'.format(quantidade_de_exemplos)
@@ -148,3 +151,5 @@ print '{:.4g}% dos adotados eram filhotes'.format(len(puppy_and_adoption)/len(do
 print '{:.4g}% dos adotados eram adultos'.format(len(adult_dog_and_adoption)/len(dogs_and_adoption) *100)
 print '{:.4g}% dos adotados eram idosos'.format(len(aging_dog_and_adoption)/len(dogs_and_adoption) *100)
 
+print '=========== Adoção e foster ============================================================='
+print '{} Adotados e foster'.format(len(adoption_and_foster) + len(adoption_and_foster_2))
