@@ -30,7 +30,7 @@ def try_classifier(clf, tag):
     scores = cross_val_score(clf, dataset.x, dataset.y, cv=5, scoring='log_loss')
     print("Logloss (%s) on dogs: %0.2f (+/- %0.2f)" % (tag, scores.mean(), scores.std() * 2))
     
-    dog_testset.export_prob_predictions_to_csv(output_file+'_'+tag+'.csv', cat_testset.ids + dog_testset.ids, list(predictions_on_cats) + list(predictions_on_dogs))    
+    dog_testset.export_prob_predictions_to_csv(output_file+'_'+tag+'.csv', cat_testset.ids + dog_testset.ids, list(predictions_on_cats) + list(predictions_on_dogs))
 
 # try_classifier(DecisionTreeClassifier(), 'decisiontree')
 # try_classifier(DecisionTreeClassifier(min_samples_split=1), 'decisiontree_min_samples_split_1')
@@ -40,6 +40,7 @@ def try_classifier(clf, tag):
 # try_classifier(DecisionTreeClassifier(max_features='sqrt'), 'decisiontree_max_features_sqrt')
 # try_classifier(DecisionTreeClassifier(max_features='log2'), 'decisiontree_max_features_log2')
 # try_classifier(DecisionTreeClassifier(max_features=None), 'decisiontree_max_features_None')
+
 
 # try_classifier(RandomForestClassifier(), 'randomforest')
 # try_classifier(RandomForestClassifier(n_estimators=1000), 'randomforest_n_estimators_1000')
@@ -53,6 +54,13 @@ def try_classifier(clf, tag):
 # try_classifier(RandomForestClassifier(max_features='log2'), 'randomforest_max_features_log2')
 # try_classifier(RandomForestClassifier(max_features=None), 'randomforest_max_features_None')
 
+#try_classifier(RandomForestClassifier(), 'randomforest')
+# try_classifier(RandomForestClassifier(n_estimators=1000), 'randomforest_n_estimators_1000')
+
+#try_classifier(RandomForestClassifier(), 'randomforest')
+# try_classifier(RandomForestClassifier(n_estimators=2000), 'randomforest_n_estimators_2000')
+# try_classifier(RandomForestClassifier(n_estimators=1000, min_samples_split=5), 'randomforest_n_estimators_1000_split_3')
+
 # try_classifier(ExtraTreesClassifier(), 'extratrees')
 # try_classifier(ExtraTreesClassifier(n_estimators=1000), 'extratrees_n_estimators_1000')
 # try_classifier(ExtraTreesClassifier(n_estimators=3000), 'extratrees_n_estimators_3000')
@@ -65,7 +73,7 @@ def try_classifier(clf, tag):
 # try_classifier(ExtraTreesClassifier(max_features='log2'), 'extratrees_max_features_log2')
 # try_classifier(ExtraTreesClassifier(max_features=None), 'extratrees_max_features_None')
 
-try_classifier(GradientBoostingClassifier(), 'gradientboosting')
+# try_classifier(GradientBoostingClassifier(), 'gradientboosting')
 # try_classifier(GradientBoostingClassifier(min_samples_split=1), 'gradientboosting_min_samples_split_1')
 # try_classifier(GradientBoostingClassifier(min_samples_split=3), 'gradientboosting_min_samples_split_3')
 # try_classifier(GradientBoostingClassifier(max_features=1), 'gradientboosting_max_features_1')
@@ -76,3 +84,8 @@ try_classifier(GradientBoostingClassifier(), 'gradientboosting')
 # try_classifier(GradientBoostingClassifier(max_features=None), 'gradientboosting_max_features_None')
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
 # try_classifier(GradientBoostingClassifier(n_estimators=3000), 'gradientboosting_n_estimators_3000')
+
+#try_classifier(GradientBoostingClassifier(), 'gradientboosting')
+
+try_classifier(GradientBoostingClassifier(learning_rate=0.3), 'gradientboosting')
+
