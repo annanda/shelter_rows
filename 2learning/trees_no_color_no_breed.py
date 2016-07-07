@@ -89,4 +89,3 @@ try_classifier(GradientBoostingClassifier(), 'gradientboosting')
 # try_classifier(GradientBoostingClassifier(learning_rate=0.9), 'gradientboosting_learning_rate_09')
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
 # try_classifier(GradientBoostingClassifier(max_depth=4), 'gradientboosting_max_depth_4')
-
