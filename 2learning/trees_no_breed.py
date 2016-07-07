@@ -6,9 +6,9 @@ from AnimalDataset import AnimalDataset, AnimalTestDataset
 import rows
 import numpy
 
-source_type = '_no_color_no_breed'
+source_type = '_no_breed'
 source_file = '../0cleaning/clean_data3' + source_type
-output_file = 'random_forest'+source_type
+output_file = 'trees'+source_type
 def try_classifier(clf, tag):
     dataset = AnimalDataset(source_file+'_cat.csv')
     cat_testset = AnimalTestDataset(source_file+'_cat_test.csv')
@@ -85,10 +85,8 @@ def try_classifier(clf, tag):
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
 # try_classifier(GradientBoostingClassifier(n_estimators=3000), 'gradientboosting_n_estimators_3000')
 
-#try_classifier(GradientBoostingClassifier(), 'gradientboosting')
-
-# try_classifier(GradientBoostingClassifier(learning_rate=0.9), 'gradientboosting')
-# try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting')
-
-try_classifier(GradientBoostingClassifier(max_depth=4), 'gradientboosting')
+try_classifier(GradientBoostingClassifier(), 'gradientboosting')
+# try_classifier(GradientBoostingClassifier(learning_rate=0.9), 'gradientboosting_learning_rate_09')
+# try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
+# try_classifier(GradientBoostingClassifier(max_depth=4), 'gradientboosting_max_depth_4')
 
