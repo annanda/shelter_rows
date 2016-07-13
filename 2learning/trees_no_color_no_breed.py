@@ -42,7 +42,7 @@ def try_classifier(clf, tag):
 # try_classifier(DecisionTreeClassifier(max_features=None), 'decisiontree_max_features_None')
 
 
-# try_classifier(RandomForestClassifier(), 'randomforest')
+try_classifier(RandomForestClassifier(), 'randomforest')
 # try_classifier(RandomForestClassifier(n_estimators=1000), 'randomforest_n_estimators_1000')
 # # try_classifier(RandomForestClassifier(n_estimators=10000), 'randomforest_n_estimators_10000') nao faz diferenca
 # try_classifier(RandomForestClassifier(n_estimators=1000, min_samples_split=1), 'randomforest_n_estimators_1000_min_samples_split_1')
@@ -85,7 +85,7 @@ def try_classifier(clf, tag):
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
 # try_classifier(GradientBoostingClassifier(n_estimators=3000), 'gradientboosting_n_estimators_3000')
 
-try_classifier(GradientBoostingClassifier(), 'gradientboosting')
+# try_classifier(GradientBoostingClassifier(), 'gradientboosting')
 # try_classifier(GradientBoostingClassifier(learning_rate=0.9), 'gradientboosting_learning_rate_09')
 # try_classifier(GradientBoostingClassifier(n_estimators=1000), 'gradientboosting_n_estimators_1000')
 # try_classifier(GradientBoostingClassifier(max_depth=4), 'gradientboosting_max_depth_4')
