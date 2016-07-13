@@ -1,6 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier
 from AnimalDataset import AnimalDataset, AnimalTestDataset
 from sklearn.ensemble import VotingClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn import cross_validation
 
 # Usando a votacao como classificador 
@@ -9,8 +10,9 @@ from sklearn import cross_validation
 
 clf1 = GradientBoostingClassifier()
 clf2 = RandomForestClassifier(n_estimators=1000)
+clf3 = DecisionTreeClassifier()
 
-eclf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2)], voting='soft', weights=[5,0.5])
+eclf = VotingClassifier(estimators=[('bg', clf1), ('rf', clf2), ('dt', clf3)], voting='soft', weights=[5,0.5, 1])
 
 source_type = '_no_color_no_breed'
 source_file = '../0cleaning/clean_data3' + source_type
@@ -26,10 +28,11 @@ for clf, label in zip([clf1, clf2, eclf], ['Gradient Boosting','Random Forest', 
 
 clf1 = GradientBoostingClassifier()
 clf2 = RandomForestClassifier(n_estimators=1000)
+clf3 = DecisionTreeClassifier()
 
 ############## Dogs #############################
 
-eclf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2)], voting='soft', weights=[5,0.5])
+eclf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2), ('dt', clf3)], voting='soft', weights=[5,0.5, 1])
 dataset = AnimalDataset(source_file+'_dog.csv')
 dog_testset = AnimalTestDataset(source_file+'_dog_test.csv')
 
